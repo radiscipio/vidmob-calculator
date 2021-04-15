@@ -6,10 +6,10 @@ export default class Buttons extends Component {
     return (
       <div className='buttons-container'>
         <div className='buttons-row'>
-          <div className='buttons'>AC</div>
+          <div className='buttons'>CE</div>
           <div className='buttons'>(</div>
           <div className='buttons'>)</div>
-          <div className='buttons'>CE</div>
+          <div className='buttons'>AC</div>
         </div>
         <div className='buttons-row'>
           <div className='buttons'>7</div>
@@ -30,8 +30,8 @@ export default class Buttons extends Component {
           <div className='buttons'>-</div>
         </div>
         <div className='buttons-row'>
-          <div className='buttons'>0</div>
           <div className='buttons'>.</div>
+          <div className='buttons'>0</div>
           <div className='buttons'>=</div>
           <div className='buttons'>+</div>
         </div>
