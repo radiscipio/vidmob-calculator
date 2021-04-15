@@ -9,7 +9,7 @@ export default class Buttons extends Component {
           <div className='buttons'>AC</div>
           <div className='buttons'>(</div>
           <div className='buttons'>)</div>
-          <div className='buttons'>/</div>
+          <div className='buttons'>CE</div>
         </div>
         <div className='buttons-row'>
           <div className='buttons'>7</div>
@@ -21,7 +21,7 @@ export default class Buttons extends Component {
           <div className='buttons'>4</div>
           <div className='buttons'>5</div>
           <div className='buttons'>6</div>
-          <div className='buttons'>+</div>
+          <div className='buttons'>÷</div>
         </div>
         <div className='buttons-row'>
           <div className='buttons'>1</div>
@@ -33,6 +33,7 @@ export default class Buttons extends Component {
           <div className='buttons'>0</div>
           <div className='buttons'>.</div>
           <div className='buttons'>=</div>
+          <div className='buttons'>+</div>
         </div>
       </div>
     );
