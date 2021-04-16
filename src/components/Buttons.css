@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   background: rgb(112, 57, 126);
+  overflow: hidden;
 }
 
 .buttons-row {
@@ -14,17 +15,15 @@
 .buttons {
   background-color: rgb(114, 114, 114);
   border-radius: 50px;
-  width: 3em;
   height: 3em;
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 25px;
+  font-size: calc(20px + 6 * ((100vw - 320px) / 680));
   font-weight: bold;
 }
 
-.operator {
-  background-color: rgb(226, 147, 0);
+.special-button{
+  background-color: rgb(220, 153, 29);
 }
