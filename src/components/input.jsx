@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import "./input.css"
+import "./Input.css"
 
 export default class Input extends Component {
   render() {
     return( 
-      <div className="input-container">
+      <div className="input">
         {this.props.children}
       </div>
     )

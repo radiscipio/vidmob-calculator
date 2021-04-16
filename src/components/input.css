@@ -1,11 +1,11 @@
-.input-container {
+.input {
   display: flex;
-  height: 1em;
-  color: white;
-  background-color: rgb(73, 73, 73);
+  height: 3em;
+  background-color: rgb(114, 114, 114);
+  color: #fff;
   justify-content: flex-end;
   padding: 0.5em;
   font-weight: bold;
-  font-size: calc(25px + 6 * ((100vw - 320px) / 680));
+  font-size: calc(20px + 6 * ((100vw - 320px) / 680));
   align-items: center;
 }

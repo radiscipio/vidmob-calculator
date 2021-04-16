@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 
-import Buttons from "./components/buttons";
 import Input from "./components/input"
+import Buttons from "./components/buttons";
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -17,24 +17,12 @@ export default class App extends Component {
 
   addToInput = value => {
     this.setState({
-      input: this.state.value  + value 
+      input: this.state.value + value 
     });
   };
 
   clear = () => {
     this.setState({ input: "" });
-  };
-
-  addition = () => {
-    this.setState.prevNumber = this.state.input;
-    this.setState({ input : "" });
-    this.setState.operator = "add";
-  };
-
-  subract = () => {
-    this.setState.prevNumber = this.state.input;
-    this.setState({ input : "" });
-    this.setState.operator = "subtract";
   };
 
   multiply = () => {
@@ -47,6 +35,18 @@ export default class App extends Component {
     this.setState.prevNumber = this.state.input;
     this.setState({ input : "" });
     this.setState.operator = "divide";
+  };
+
+  add = () => {
+    this.setState.prevNumber = this.state.input;
+    this.setState({ input : "" });
+    this.setState.operator = "add";
+  };
+
+  subract = () => {
+    this.setState.prevNumber = this.state.input;
+    this.setState({ input : "" });
+    this.setState.operator = "subtract";
   };
 
   doTheMath = () => {
@@ -90,12 +90,9 @@ export default class App extends Component {
     return (
       <div className="App">
         <div className="calculator-container">
-          <Input>
-            {this.state.input}
-          </Input>
+          <Input>{this.state.input}</Input>
           <Buttons 
-            handleClick={this.state.addToInput}
-            
+            addToInput={this.state.addToInput}
           />
         </div>
       </div>

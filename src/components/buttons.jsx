@@ -9,7 +9,7 @@ export default class Buttons extends Component {
         <div className="buttons-row">
           <div className="buttons special-button">(</div>
           <div className="buttons special-button">)</div>
-          <div className="buttons special-button">←</div>
+          <div className="buttons special-button"></div>
           <div className="buttons special-button">AC</div>
         </div>
         <div className="buttons-row">

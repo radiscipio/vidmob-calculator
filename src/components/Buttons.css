@@ -9,13 +9,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: .5em;
-  padding: 1em;
+  padding: 0.3em .5em;
 }
 
 .buttons {
   background-color: rgb(114, 114, 114);
-  border-radius: 50px;
-  height: 3em;
+  /* border-radius: 50px; */
+  height: 2.5em;
   display: flex;
   align-items: center;
   justify-content: center;
