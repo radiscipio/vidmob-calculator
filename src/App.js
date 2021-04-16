@@ -28,6 +28,12 @@ export default class App extends Component {
     this.setState({ input: "" });
   };
 
+  startWithZero = (value) => {
+    if (this.state.input !== "") {
+      this.setState({ input: this.state.input + value });
+    }
+  }
+
   multiply = () => {
     this.setState.prevNumber = this.state.input;
     this.setState({ input: "" });
@@ -117,7 +123,7 @@ export default class App extends Component {
             <div className="buttons-row">
               <Buttons>.</Buttons>
               <Buttons handleClick={this.addToInput}>0</Buttons>
-              <Buttons>=</Buttons>
+              <Buttons handleClick={this.doTheMath}>=</Buttons>
               <Buttons handleClick={this.subract}>-</Buttons>
             </div>
           </div>
