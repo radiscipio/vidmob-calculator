@@ -4,10 +4,11 @@
 
 .calculator-container {
   margin: 20%;
+  display: flex;
+  flex-direction: column;
 }
 
 input {
-  width: 100%;
   text-align: right;
   padding: 1em;
   font-size: 25px;
