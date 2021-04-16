@@ -14,7 +14,13 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <Buttons />
+        <div className="calculator-container">
+          <input
+            placeholder="0"
+          >
+          </input>
+          <Buttons />
+        </div>
       </div>
     );
   }
