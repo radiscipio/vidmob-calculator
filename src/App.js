@@ -85,7 +85,6 @@ export default class App extends Component {
     }
   }
   
-
   render() {
     return (
       <div className="App">
@@ -95,6 +94,7 @@ export default class App extends Component {
             addToInput={this.state.addToInput}
           />
         </div>
+        <div>Made by Robert di Scipio</div>
       </div>
     );
   }
