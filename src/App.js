@@ -50,7 +50,39 @@ export default class App extends Component {
   };
 
   doTheMath = () => {
+    this.setState.prevNumber = this.state.input;
 
+    if (this.state.operator === "multiply") {
+        this.setState({
+          input:
+            parseInt(this.state.previousNumber) *
+            parseInt(this.state.currentNumber)
+        });
+    }
+
+    else if (this.state.operator === "divide") {
+        this.setState({
+          input:
+            parseInt(this.state.previousNumber) /
+            parseInt(this.state.currentNumber)
+        });
+    }
+
+    else if (this.state.operator === "add") {
+        this.setState({
+          input:
+            parseInt(this.state.previousNumber) +
+            parseInt(this.state.currentNumber)
+        });
+    }
+
+    else if (this.state.operator === "subtract") {
+        this.setState({
+          input:
+            parseInt(this.state.previousNumber) /
+            parseInt(this.state.currentNumber)
+        });
+    }
   }
   
 
@@ -61,7 +93,10 @@ export default class App extends Component {
           <Input>
             {this.state.input}
           </Input>
-          <Buttons />
+          <Buttons 
+            handleClick={this.state.addToInput}
+            
+          />
         </div>
       </div>
     );
