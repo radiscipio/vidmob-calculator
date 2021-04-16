@@ -8,7 +8,7 @@ export default class Buttons extends Component {
             value === ")" || 
             value === "(" || 
             value === "." || 
-            value === "="
+            value === "=";
   };
 
   render() {

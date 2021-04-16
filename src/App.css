@@ -8,6 +8,7 @@
   flex-direction: column;
   overflow: hidden;
   border-radius: 15px;
+  background: rgb(112, 57, 126);
 }
 
 input {
@@ -15,4 +16,3 @@ input {
   padding: 1em;
   font-size: calc(25px + 6 * ((100vw - 320px) / 680));
 }
-
