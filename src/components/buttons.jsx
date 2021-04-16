@@ -2,40 +2,23 @@ import React, { Component } from "react";
 import "./Buttons.css"
 
 export default class Buttons extends Component {
+
+  isNotANumber = value => {
+    return !isNaN(value) || 
+            value === ")" || 
+            value === "(" || 
+            value === "." || 
+            value === "="
+  };
+
   render() {
     return (
 
-      <div className="buttons-container">
-        <div className="buttons-row">
-          <div className="buttons special-button">(</div>
-          <div className="buttons special-button">)</div>
-          <div className="buttons special-button"></div>
-          <div className="buttons special-button">AC</div>
-        </div>
-        <div className="buttons-row">
-          <div className="buttons">7</div>
-          <div className="buttons">8</div>
-          <div className="buttons">9</div>
-          <div className="buttons special-button">*</div>
-        </div>
-        <div className="buttons-row">
-          <div className="buttons">4</div>
-          <div className="buttons">5</div>
-          <div className="buttons">6</div>
-          <div className="buttons special-button">÷</div>
-        </div>
-        <div className="buttons-row">
-          <div className="buttons">1</div>
-          <div className="buttons">2</div>
-          <div className="buttons">3</div>
-          <div className="buttons special-button">-</div>
-        </div>
-        <div className="buttons-row">
-          <div className="buttons">.</div>
-          <div className="buttons">0</div>
-          <div className="buttons special-button">=</div>
-          <div className="buttons special-button" >+</div>
-        </div>
+      <div 
+        className={`buttons ${this.isNotANumber(this.props.children) ? "" : "special-button"}`}
+        onClick={() => this.props.handleClick(this.props.children)}
+      >
+        {this.props.children}
       </div>
     );
   }
