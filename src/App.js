@@ -9,7 +9,7 @@ export default class App extends Component {
 
     this.state = {
       input: "",
-      opreator: "",
+      operator: "",
       currentNumber: "",
       prevNumber: ""
     };
@@ -19,17 +19,46 @@ export default class App extends Component {
     this.setState({
       input: this.state.value  + value 
     });
-  }
+  };
 
+  clear = () => {
+    this.setState({ input: "" });
+  };
+
+  addition = () => {
+    this.setState.prevNumber = this.state.input;
+    this.setState({ input : "" });
+    this.setState.operator = "add";
+  };
+
+  subract = () => {
+    this.setState.prevNumber = this.state.input;
+    this.setState({ input : "" });
+    this.setState.operator = "subtract";
+  };
+
+  multiply = () => {
+    this.setState.prevNumber = this.state.input;
+    this.setState({ input : "" });
+    this.setState.operator = "multiply";
+  };
+
+  divide = () => {
+    this.setState.prevNumber = this.state.input;
+    this.setState({ input : "" });
+    this.setState.operator = "divide";
+  };
+
+  doTheMath = () => {
+
+  }
   
 
   render() {
     return (
       <div className="App">
         <div className="calculator-container">
-          <Input
-            placeholder="0"
-          >
+          <Input>
             {this.state.input}
           </Input>
           <Buttons />
