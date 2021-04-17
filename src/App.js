@@ -5,6 +5,8 @@ import Input from "./components/input";
 import Buttons from "./components/buttons";
 import Clear from "./components/clear";
 
+import doTheMath from "./components/functions";
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -18,8 +20,12 @@ export default class App extends Component {
   }
 
   addToInput = (value) => {
+    if(value === "=") {
+      return this.calculate
+    }
     this.setState((prevState) => (
       { input: prevState.input + value }))
+
     console.log(value, this.state.input)
   };
 
@@ -33,6 +39,11 @@ export default class App extends Component {
     })
   }
 
+  calculate = () => {
+    console.log("calculate", doTheMath(this.state.input))
+    this.setState({ input : doTheMath(this.state.input )})
+    return doTheMath(this.state.input)
+  }
 
   render() {
     return (
@@ -52,25 +63,25 @@ export default class App extends Component {
               <Buttons handleClick={this.addToInput}>7</Buttons>
               <Buttons handleClick={this.addToInput}>8</Buttons>
               <Buttons handleClick={this.addToInput}>9</Buttons>
-              <Buttons>x</Buttons>
+              <Buttons handleClick={this.addToInput}>x</Buttons>
             </div>
             <div className="buttons-row">
               <Buttons handleClick={this.addToInput}>4</Buttons>
               <Buttons handleClick={this.addToInput}>5</Buttons>
               <Buttons handleClick={this.addToInput}>6</Buttons>
-              <Buttons>÷</Buttons>
+              <Buttons handleClick={this.addToInput}>÷</Buttons>
             </div>
             <div className="buttons-row">
               <Buttons handleClick={this.addToInput}>1</Buttons>
               <Buttons handleClick={this.addToInput}>2</Buttons>
               <Buttons handleClick={this.addToInput}>3</Buttons>
-              <Buttons>+</Buttons>
+              <Buttons handleClick={this.addToInput}>+</Buttons>
             </div>
             <div className="buttons-row">
               <Buttons>.</Buttons>
-              <Buttons>0</Buttons>
-              <Buttons>=</Buttons>
-              <Buttons>-</Buttons>
+              <Buttons handleClick={this.addToInput}>0</Buttons>
+              <Buttons handleClick={this.calculate}>=</Buttons>
+              <Buttons handleClick={this.addToInput}>-</Buttons>
             </div>
           </div>
         </div>
