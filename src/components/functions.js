@@ -17,11 +17,12 @@ let splitOperators = (input) => {
       newInput.push(input.substring(startIndex, i));
       newInput.push("+");
       startIndex = i + 1;
-    } else if (input[i] === "*") {
+    } else if (input[i] === "*" || input[i] === "x") { 
+
       newInput.push(input.substring(startIndex, i));
       newInput.push("*");
       startIndex = i + 1;
-    } else if (input[i] === "/") {
+    } else if (input[i] === "/" || input[i] === "÷") {
       newInput.push(input.substring(startIndex, i));
       newInput.push("/");
       startIndex = i + 1;
@@ -56,7 +57,7 @@ let doTheMath = (str) => {
       i = 0;
     }
   }
-  return input[0];
+  return input[0].toString();
 };
 
 // console.log(splitOperators("10+9-4*4"));
@@ -64,3 +65,6 @@ let doTheMath = (str) => {
 // console.log(doTheMath("4*4"));
 // console.log(doTheMath("12/4"));
 console.log(doTheMath("10+9-4*4"));
+
+
+export default doTheMath
