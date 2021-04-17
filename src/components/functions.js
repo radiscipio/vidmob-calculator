@@ -1,45 +1,66 @@
-// let result = ""
-// let operation = "+"
-
-// switch (operation) {
-//   case "+":
-//     // result = num1 + num2;
-//     console.log("it works")
-//     break;
-//   // case "-":
-//   //   num1 - num2;
-//   //   break;
-//   // case "*":
-//   //   num1 * num2;
-//   //   break;
-//   // case "/":
-//   //   num1 / num2;
-//   // break;
-
-//   default:
-//     console.log("default")
+// let getPriority = (input) => {
+//   if (input === "+" || input === "-") return 1;
+//   else if (input === "*" || input === "/") return 2;
+//   return 0;
 // }
 
-// let result = "";
+let splitOperators = (input) => {
+  let startIndex = 0;
+  let newInput = [];
 
-// let input = "7+4";
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] === "-") {
+      newInput.push(input.substring(startIndex, i));
+      newInput.push("-");
+      startIndex = i + 1;
+    } else if (input[i] === "+") {
+      newInput.push(input.substring(startIndex, i));
+      newInput.push("+");
+      startIndex = i + 1;
+    } else if (input[i] === "*") {
+      newInput.push(input.substring(startIndex, i));
+      newInput.push("*");
+      startIndex = i + 1;
+    } else if (input[i] === "/") {
+      newInput.push(input.substring(startIndex, i));
+      newInput.push("/");
+      startIndex = i + 1;
+    }
+  }
+  newInput.push(input.substring(startIndex, input.length));
+  return newInput;
+};
 
-// const add = (num1, num2) => {
-//   return parseFloat(num1) + parseFloat(num2);
-// };
+let doTheMath = (str) => {
 
-// const calculate = (input) => {
-//   for (let i = 0; i < input.length; i++) {
-//     if (input[i] === "+") {
-//       return add(input[i - 1], input[i + 1]);
-//     } else if (input[i] === "+") {
-//       return add(input[i - 1], input[i + 1]);
-//     } else if (input[i] === "+") {
-//       return add(input[i - 1], input[i + 1]);
-//     } else if (input[i] === "+") {
-//       return add(input[i - 1], input[i + 1]);
-//     }
-//   }
-// };
+  const input = splitOperators(str);
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] === "*") {
+      let calc = parseFloat(input[i - 1]) * parseFloat(input[i + 1]);
+      input.splice(i - 1, 3, calc);
+      i = 0;
+    } else if (input[i] === "/") {
+      let calc = parseFloat(input[i - 1]) / parseFloat(input[i + 1]);
+      input.splice(i - 1, 3, calc);
+      i = 0;
+    }
+  }
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] === "+") {
+      let calc = parseFloat(input[i - 1]) + parseFloat(input[i + 1]);
+      input.splice(i - 1, 3, calc);
+      i = 0;
+    } else if (input[i] === "-") {
+      let calc = parseFloat(input[i - 1]) - parseFloat(input[i + 1]);
+      input.splice(i - 1, 3, calc);
+      i = 0;
+    }
+  }
+  return input[0];
+};
 
-// console.log(calculate(input));
+// console.log(splitOperators("10+9-4*4"));
+// console.log(doTheMath("4+4"));
+// console.log(doTheMath("4*4"));
+// console.log(doTheMath("12/4"));
+console.log(doTheMath("10+9-4*4"));
