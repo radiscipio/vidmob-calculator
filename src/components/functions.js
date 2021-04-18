@@ -1,8 +1,6 @@
-// let getPriority = (input) => {
-//   if (input === "+" || input === "-") return 1;
-//   else if (input === "*" || input === "/") return 2;
-//   return 0;
-// }
+let parensCheck = (input) => {
+  
+}
 
 let splitOperators = (input) => {
   let startIndex = 0;
