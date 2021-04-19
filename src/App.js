@@ -40,7 +40,7 @@ export default class App extends Component {
   }
 
   calculate = () => {
-    console.log("calculate", doTheMath(this.state.input))
+    console.log("this is calculate", doTheMath(this.state.input))
     this.setState({ input : doTheMath(this.state.input )})
     return doTheMath(this.state.input)
   }
@@ -52,10 +52,10 @@ export default class App extends Component {
           <div className="input-wrapper">
             <Input handleInput={this.state.input} />
           </div>
-          <div claassName="buttons-container">
+          <div className="buttons-container">
             <div className="buttons-row">
-              <Buttons>(</Buttons>
-              <Buttons>)</Buttons>
+              <Buttons handleClick={this.addToInput}>(</Buttons>
+              <Buttons handleClick={this.addToInput}>)</Buttons>
               <Buttons handleClick={this.backspace}>←</Buttons>
               <Clear handleClear={this.clearInput}>AC</Clear>
             </div>

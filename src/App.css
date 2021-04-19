@@ -8,6 +8,7 @@
   flex-direction: column;
   overflow: hidden;
   border-radius: 15px;
+  border: 1px solid black;
   background: rgb(112, 57, 126);
 }
 
