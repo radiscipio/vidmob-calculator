@@ -8,7 +8,7 @@ let splitOperators = (input) => {
   // Iterate through the input to check if it includes an operator
   // Push the operator into newInput if there's a match
   for (let i = 0; i < input.length; i++) {
-    if (input[i] === "*" || input[i] === "x") { 
+    if (input[i] === "*" || input[i] === "x") {
       newInput.push(input.substring(startIndex, i));
       newInput.push("*");
       startIndex = i + 1;
@@ -24,7 +24,7 @@ let splitOperators = (input) => {
       newInput.push(input.substring(startIndex, i));
       newInput.push("-");
       startIndex = i + 1;
-    } 
+    }
   }
   newInput.push(input.substring(startIndex, input.length));
   return newInput;
@@ -36,10 +36,9 @@ let splitOperators = (input) => {
 let pemdas = (str) => {
   const input = splitOperators(str);
   // Check for mult and divide first, then add and subtract
-    // Convert the string input into a number 
-    // Splice the new number into the desired position
+  // Convert the string input into a number
+  // Splice the new number into the desired position
   for (let i = 0; i < input.length; i++) {
-    
     if (input[i] === "*") {
       let calc = parseFloat(input[i - 1]) * parseFloat(input[i + 1]);
       input.splice(i - 1, 3, calc);
@@ -62,35 +61,53 @@ let pemdas = (str) => {
     }
   }
   return input[0].toString();
+};
+
+///////////////////////////////
+////Negative Numbers Check////
+/////////////////////////////
+
+let negativeNums = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+
+  }
 }
+
 
 //////////////////////////
 ////Parentheses Check////
 ////////////////////////
-let doTheMath = (str) => {
+let parensCheck = (str) => {
+  
   for (let i = 0; i < str.length; i++) {
-    
-    let parensOpen = str.indexOf("(")
-    let parensClose = str.indexOf(")")
-    
-    let parensValues = str.substring(parensOpen, parensClose + 1)
-    let parensFunction = pemdas(str.substring(parensOpen + 1, parensClose + 1))
+    if ((!isNaN(parseFloat(str[i])) && str[i + 1] === "(") || 
+        (!isNaN(parseFloat(str[i + 1])) && str[i] === ")") || 
+        (str[i] === ")" && str[i + 1] === "(")) {
+      str = str.split("");
+      str.splice(i + 1, 0, "*");
+      str = str.join("");
+      i++
+    }
+  }
+  for (let i = 0; i < str.length; i++) {
+    let parensOpen = str.indexOf("(");
+    let parensClose = str.indexOf(")");
+
+    let parensValues = str.substring(parensOpen, parensClose + 1);
+    let parensFunction = pemdas(str.substring(parensOpen + 1, parensClose + 1));
 
     // If the string includes parens, replace the value what's inside the parens into the string
     if (str.includes("(") && str.includes(")")) {
-      str = str.replace(parensValues, parensFunction)
+      str = str.replace(parensValues, parensFunction);
     }
   }
-  console.log("this is before result", str)
-  str = pemdas(str)
-  console.log("this is after result", str)
-
-  return str
+  str = pemdas(str);
+  return str;
 };
 
-console.log(doTheMath("(4*8)+5"));
-console.log(doTheMath("(9/8)"));
-console.log(doTheMath("(4/8)"));
-console.log(doTheMath("(8-10)+5"));
+// console.log(parensCheck("(4*8)+5"));
+console.log(parensCheck("1+2(5)"));
+console.log(parensCheck("(1+2)5"));
+console.log(parensCheck("(1+2)(5+2)"));
 
-export default doTheMath
+// export default parensCheck
