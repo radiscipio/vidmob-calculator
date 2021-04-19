@@ -68,7 +68,6 @@ let pemdas = (str) => {
 ////Parentheses Check////
 ////////////////////////
 let doTheMath = (str) => {
-  let result = ""
   for (let i = 0; i < str.length; i++) {
     
     let parensOpen = str.indexOf("(")
@@ -79,16 +78,19 @@ let doTheMath = (str) => {
 
     // If the string includes parens, replace the value what's inside the parens into the string
     if (str.includes("(") && str.includes(")")) {
-      result = str.replace(parensValues, parensFunction)
+      str = str.replace(parensValues, parensFunction)
     }
   }
-  result = pemdas(result)
-  return result
+  console.log("this is before result", str)
+  str = pemdas(str)
+  console.log("this is after result", str)
+
+  return str
 };
 
 console.log(doTheMath("(4*8)+5"));
-console.log(doTheMath("(5.5+4.21)"));
+console.log(doTheMath("(9/8)"));
 console.log(doTheMath("(4/8)"));
 console.log(doTheMath("(8-10)+5"));
 
-export default pemdas
+export default doTheMath
