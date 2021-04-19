@@ -77,7 +77,7 @@ let doTheMath = (str) => {
     let parensValues = str.substring(parensOpen, parensClose + 1)
     let parensFunction = pemdas(str.substring(parensOpen + 1, parensClose + 1))
 
-    // Replace the value what's inside the parens into the string
+    // If the string includes parens, replace the value what's inside the parens into the string
     if (str.includes("(") && str.includes(")")) {
       result = str.replace(parensValues, parensFunction)
     }
@@ -91,4 +91,4 @@ console.log(doTheMath("(5.5+4.21)"));
 console.log(doTheMath("(4/8)"));
 console.log(doTheMath("(8-10)+5"));
 
-export default doTheMath
+export default pemdas

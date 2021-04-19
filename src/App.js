@@ -5,7 +5,7 @@ import Input from "./components/input";
 import Buttons from "./components/buttons";
 import Clear from "./components/clear";
 
-import doTheMath from "./components/functions";
+import pemdas from "./components/functions";
 
 export default class App extends Component {
   constructor(props) {
@@ -40,9 +40,9 @@ export default class App extends Component {
   }
 
   calculate = () => {
-    console.log("this is calculate", doTheMath(this.state.input))
-    this.setState({ input : doTheMath(this.state.input )})
-    return doTheMath(this.state.input)
+    console.log("this is calculate", pemdas(this.state.input))
+    this.setState({ input : pemdas(this.state.input )})
+    return pemdas(this.state.input)
   }
 
   render() {

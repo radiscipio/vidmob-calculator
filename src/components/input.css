@@ -9,4 +9,5 @@
   padding: 0.5em;
   font-weight: bold;
   font-size: calc(25px + 6 * ((100vw - 320px) / 680));
+  display: block;
 }

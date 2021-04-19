@@ -12,8 +12,3 @@
   background: rgb(112, 57, 126);
 }
 
-input {
-  text-align: right;
-  padding: 1em;
-  font-size: calc(25px + 6 * ((100vw - 320px) / 680));
-}
