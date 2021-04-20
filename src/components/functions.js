@@ -124,10 +124,9 @@ let negativeNums = (arr) => {
 ////////////////////////
 
 // Parens next to each other currently throwing NaN. 
-// Need to 
+// Need to iteerate thrugh again for the check, while maintaining the number of the first parens check
 let parensCheck = (str) => {
   // If syntax check returns false, return syntax error
-  // Check to see if there is a number and an open parens
   for (let i = 0; i < str.length; i++) {
     if (
       (!isNaN(parseFloat(str[i])) && str[i + 1] === "(") ||
