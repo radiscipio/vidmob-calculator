@@ -124,7 +124,7 @@ let negativeNums = (arr) => {
 ////////////////////////
 
 // Parens next to each other currently throwing NaN. 
-// Need to iteerate thrugh again for the check, while maintaining the number of the first parens check
+// Need to iteerate through again for the check, while maintaining the number of the first parens check
 let parensCheck = (str) => {
   // If syntax check returns false, return syntax error
   for (let i = 0; i < str.length; i++) {
