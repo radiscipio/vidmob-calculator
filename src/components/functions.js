@@ -27,6 +27,12 @@ let splitOperators = (input) => {
     }
   }
   newInput.push(input.substring(startIndex, input.length));
+  for (let i = 0; i < newInput.length; i++) {
+    if (newInput[i] === '') {
+      newInput.splice(i, 1);
+    }
+  }
+  // console.log('newInput', newInput)
   return newInput;
 };
 
@@ -34,7 +40,9 @@ let splitOperators = (input) => {
 ////Order of Oprations////
 /////////////////////////
 let pemdas = (str) => {
-  const input = splitOperators(str);
+  let input = splitOperators(str);
+  input = negativeNums(input);
+
   // Check for mult and divide first, then add and subtract
   // Convert the string input into a number
   // Splice the new number into the desired position
@@ -60,54 +68,73 @@ let pemdas = (str) => {
       i = 0;
     }
   }
-  return input[0].toString();
+  if (input.length > 0) {
+    return input[0].toString();
+  }
 };
 
 ///////////////////////////////
 ////Negative Numbers Check////
 /////////////////////////////
-
 let negativeNums = (arr) => {
+  // Take out the negatives and prepend them with the following number
   for (let i = 0; i < arr.length; i++) {
-
+    if (arr[i] === "-" && !isNaN(parseFloat(arr[i + 1]))) {
+      arr.splice(i, 2, `-${arr[i + 1]}`);
+    }
   }
-}
-
+  for (let i = 0; i < arr.length; i++) {
+    if (
+      !isNaN(parseFloat(arr[i])) &&
+      Math.sign(parseFloat(arr[i + 1])) === -1
+    ) {
+      arr.splice(i + 1, 0, "+");
+      i++;
+    }
+  }
+  return arr;
+};
 
 //////////////////////////
 ////Parentheses Check////
 ////////////////////////
 let parensCheck = (str) => {
-  
+
+  // Check to see if there is a number and an open parens
   for (let i = 0; i < str.length; i++) {
-    if ((!isNaN(parseFloat(str[i])) && str[i + 1] === "(") || 
-        (!isNaN(parseFloat(str[i + 1])) && str[i] === ")") || 
-        (str[i] === ")" && str[i + 1] === "(")) {
+    if (
+      (!isNaN(parseFloat(str[i])) && str[i + 1] === "(") ||
+      (!isNaN(parseFloat(str[i + 1])) && str[i] === ")") ||
+      (str[i] === ")" && str[i + 1] === "(")
+    ) {
       str = str.split("");
       str.splice(i + 1, 0, "*");
       str = str.join("");
-      i++
+      i++;
     }
   }
-  for (let i = 0; i < str.length; i++) {
-    let parensOpen = str.indexOf("(");
-    let parensClose = str.indexOf(")");
 
-    let parensValues = str.substring(parensOpen, parensClose + 1);
-    let parensFunction = pemdas(str.substring(parensOpen + 1, parensClose + 1));
+  // If the string includes parens, replace the value what's inside the parens into the string
+  if (str.includes("(") && str.includes(")")) {
+      let parensOpen = str.indexOf("(");
+      let parensClose = str.indexOf(")");
 
-    // If the string includes parens, replace the value what's inside the parens into the string
-    if (str.includes("(") && str.includes(")")) {
+      let parensValues = str.substring(parensOpen, parensClose + 1);
+      let parensFunction = pemdas(str.substring(parensOpen + 1, parensClose));
+
       str = str.replace(parensValues, parensFunction);
-    }
+    
   }
   str = pemdas(str);
-  return str;
+  return str.toString();
 };
 
-// console.log(parensCheck("(4*8)+5"));
-console.log(parensCheck("1+2(5)"));
-console.log(parensCheck("(1+2)5"));
-console.log(parensCheck("(1+2)(5+2)"));
+// Testing equations
 
-// export default parensCheck
+// console.log(parensCheck("(4*8)5")); // A: 160
+// console.log(parensCheck("5*6")); // A: 30
+// console.log(parensCheck("1+2(5)")); // A: 11
+// console.log(parensCheck("-3-6")); //: -9
+// console.log(parensCheck("4.5*2.3")); //: 10.35
+
+export default parensCheck

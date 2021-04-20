@@ -5,7 +5,7 @@ import Input from "./components/input";
 import Buttons from "./components/buttons";
 import Clear from "./components/clear";
 
-import doTheMath from "./components/functions";
+import parensCheck from "./components/functions";
 
 export default class App extends Component {
   constructor(props) {
@@ -40,9 +40,16 @@ export default class App extends Component {
   }
 
   calculate = () => {
-    console.log("this is calculate", doTheMath(this.state.input))
-    this.setState({ input : doTheMath(this.state.input )})
-    return doTheMath(this.state.input)
+    this.setState({ 
+      input : parensCheck(this.state.input 
+    )})
+    return parensCheck(this.state.input)
+  }
+
+  insertDecimal = () => {
+    this.setState({
+      input: this.setState.input + "."
+    })
   }
 
   render() {
@@ -78,7 +85,7 @@ export default class App extends Component {
               <Buttons handleClick={this.addToInput}>+</Buttons>
             </div>
             <div className="buttons-row">
-              <Buttons>.</Buttons>
+              <Buttons handleClick={this.insertDecimal}>.</Buttons>
               <Buttons handleClick={this.addToInput}>0</Buttons>
               <Buttons handleClick={this.calculate}>=</Buttons>
               <Buttons handleClick={this.addToInput}>-</Buttons>
