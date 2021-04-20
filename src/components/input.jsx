@@ -1,12 +1,16 @@
 import React, { Component } from "react";
-import "./Input.css"
+import "./Input.css";
 
 export default class Input extends Component {
   render() {
-    return( 
-      <div className="input">
-        {this.props.handleInput}
-      </div>
-    )
+    return (
+      <input 
+        className="input" 
+        onChange={this.props.onChangeInput}
+        type="text"
+        value={this.props.handleInput}
+        >
+      </input>
+    );
   }
 }

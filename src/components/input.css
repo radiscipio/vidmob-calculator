@@ -3,11 +3,10 @@
   height: 2em;
   background-color: rgb(114, 114, 114);
   border-bottom: 1px solid black;
-  color: rgb(255, 255, 255);
-  justify-content: flex-end;
   align-items: center;
+  color: rgb(255, 255, 255);
   text-align: right;
-  padding: 0.5em;
+  padding: .5em;
   font-weight: bold;
   font-size: calc(20px + 6 * ((100vw - 320px) / 680));
 }

@@ -48,17 +48,23 @@ export default class App extends Component {
 
   insertDecimal = () => {
     this.setState({
-      input: this.setState.input + "."
+      input: this.state.input + "."
     })
+  }
+
+  onChangeInput = (e) => {
+    e.preventDefault();
+    this.setState({ input : e.target.value })
   }
 
   render() {
     return (
       <div className="App">
         <div className="calculator-container">
-          <div className="input-wrapper">
-            <Input handleInput={this.state.input} />
-          </div>
+            <Input 
+              onChangeInput={this.onChangeInput}
+              handleInput={this.state.input} 
+            />
           <div className="buttons-container">
             <div className="buttons-row">
               <Buttons handleClick={this.addToInput}>(</Buttons>
