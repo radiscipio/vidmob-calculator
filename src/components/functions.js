@@ -1,24 +1,32 @@
-
 let syntaxError = (str) => {
-
   let letters = "abcdefghijklmnopqrstuvwxyz";
-  let edgeCases = ['++', '+/', '/+', '+*', '*+', '-*', '-/', '**', '*/', '/*', '**', '//', '-+', '..', '()'];
+
+  let edgeCases = [
+    "++", "+/", "/+", "+*", "*+",
+    "-*", "-/", "**", "*/", "/*", 
+    "**", "//", "-+", "..", "()",
+    "(/", "(+", "(*", "+)", "-)",
+    "/)", "*)", "(*)", "(/)", "(+)"
+  ];
   for (let i = 0; i < str.length; i++) {
     if (str.includes(letters[i])) {
-      return true 
+      return true;
     }
-  };
+  }
   for (let i = 0; i < str.length; i++) {
     if (str.includes(edgeCases[i])) {
-      return true
+      return true;
     }
-  };
-}
+  }
+};
 
 ////////////////////////
 ////Operators Check////
 //////////////////////
 let splitOperators = (input) => {
+  if (syntaxError(input) === true) {
+    return "Syntax Error";
+  }
   let startIndex = 0;
   let newInput = [];
 
@@ -42,13 +50,13 @@ let splitOperators = (input) => {
       newInput.push("-");
       startIndex = i + 1;
     }
-  };
+  }
   newInput.push(input.substring(startIndex, input.length));
   for (let i = 0; i < newInput.length; i++) {
-    if (newInput[i] === '') {
+    if (newInput[i] === "") {
       newInput.splice(i, 1);
     }
-  };
+  }
   return newInput;
 };
 
@@ -72,7 +80,7 @@ let pemdas = (str) => {
       input.splice(i - 1, 3, calc);
       i = 0;
     }
-  };
+  }
   for (let i = 0; i < input.length; i++) {
     if (input[i] === "+") {
       let calc = parseFloat(input[i - 1]) + parseFloat(input[i + 1]);
@@ -83,10 +91,10 @@ let pemdas = (str) => {
       input.splice(i - 1, 3, calc);
       i = 0;
     }
-  };
+  }
   if (input.length > 0) {
     return input[0].toString();
-  };
+  }
 };
 
 ///////////////////////////////
@@ -98,7 +106,7 @@ let negativeNums = (arr) => {
     if (arr[i] === "-" && !isNaN(parseFloat(arr[i + 1]))) {
       arr.splice(i, 2, `-${arr[i + 1]}`);
     }
-  };
+  }
   for (let i = 0; i < arr.length; i++) {
     if (
       !isNaN(parseFloat(arr[i])) &&
@@ -107,18 +115,18 @@ let negativeNums = (arr) => {
       arr.splice(i + 1, 0, "+");
       i++;
     }
-  };
+  }
   return arr;
 };
 
 //////////////////////////
 ////Parentheses Check////
 ////////////////////////
+
+// Parens next to each other currently throwing NaN. 
+// Need to 
 let parensCheck = (str) => {
-// If syntax check returns false, return syntax error
-  if (syntaxError(str) === true) {
-    return "Syntax Error"
-  }
+  // If syntax check returns false, return syntax error
   // Check to see if there is a number and an open parens
   for (let i = 0; i < str.length; i++) {
     if (
@@ -131,18 +139,17 @@ let parensCheck = (str) => {
       str = str.join("");
       i++;
     }
-  };
+  }
 
   // If the string includes parens, replace the value what's inside the parens into the string
   if (str.includes("(") && str.includes(")")) {
-      let parensOpen = str.indexOf("(");
-      let parensClose = str.indexOf(")");
+    let parensOpen = str.indexOf("(");
+    let parensClose = str.indexOf(")");
 
-      let parensValues = str.substring(parensOpen, parensClose + 1);
-      let parensFunction = pemdas(str.substring(parensOpen + 1, parensClose));
+    let parensValues = str.substring(parensOpen, parensClose + 1);
+    let parensFunction = pemdas(str.substring(parensOpen + 1, parensClose));
 
-      str = str.replace(parensValues, parensFunction);
-    
+    str = str.replace(parensValues, parensFunction);
   }
   str = pemdas(str);
   return str.toString();
@@ -158,5 +165,7 @@ let parensCheck = (str) => {
 // console.log(parensCheck("-3-6")); // A: -9
 // console.log(parensCheck("4.5*2.3")); // A: 10.35
 // console.log(parensCheck("4.5+ apple")); // A: Syntax Error
+// console.log(parensCheck("7+/16")); // A: Syntax Error
+// console.log(parensCheck("32..10 apple")); // A: Syntax Error
 
 export default parensCheck;

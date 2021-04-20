@@ -6,7 +6,10 @@
   align-items: center;
   color: rgb(255, 255, 255);
   text-align: right;
-  padding: .5em;
+  padding: 0.5em;
   font-weight: bold;
   font-size: calc(20px + 6 * ((100vw - 320px) / 680));
+  line-break: auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
